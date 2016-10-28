@@ -12,21 +12,26 @@ var resetGridArr = ["a1", "a2", "a3", "b1", "b2", "b3", "c1", "c2", "c3"];
 //keep track of player
 var xTurn = true;
 
+function isGridEmpy(){
+
+}
+
 //chaecks whos turn and place X or O
 function putXorO(whosTurn) {
-  if (xTurn) {
+  if (xTurn && $(this).text("")) {
     xTurn = false;
     $(this).text("X");
-    console.log("second log", whosTurn);
-  } else {
+    // $(this).unbind('click');
+  } else if ($(this).text("")){
     xTurn = true;
     $(this).text("O");
-    console.log('third log', whosTurn);
+    // $(this).unbind('click');
+  ;
   }
 }
 
 //calling putXorO by clicking a grid
-$('.box').on('click', putXorO);
+$('.box').one('click', putXorO);
 
 
 
@@ -52,15 +57,11 @@ function resetBoard() {
 }
 
 
+
 //Reset btn resets the grid to menpty
 $("#btn").on('click', function() {
   console.log($(this).text());
   $('.box').text("");
-})
-
-
-
-
-
-
+  $('.box').one('click', putXorO);
+  })
 });
