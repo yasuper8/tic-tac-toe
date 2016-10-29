@@ -11,7 +11,7 @@ $(document).ready(function() {
 
   var middleRow = ["b1", "b2", "b3"];
   var bottomRow = ["c1", "c2", "c3"];
-
+  var gameOn = true;
 
 
   //keep track of player
@@ -60,12 +60,14 @@ function checkAllMatches() {
         matchCounterO++;
       }
       if (matchCounterO === 3) {
+        gameOn = false;
         setTimeout(function() {
           alert("O win!");
         }, 150);
       }
       if (matchCounterX === 3) {
         setTimeout(function() {
+          gameOn = false;
           alert("X win!");
         }, 150);
       }
@@ -93,7 +95,7 @@ function checkAllMatches() {
     }
   }
 
-  displayWhosTrn();
+
   // This does not work.
   // function styleXandO() {
   //   $(this).css( 'font-size', '8em' );
@@ -125,7 +127,16 @@ function checkAllMatches() {
   // Calling putXorO by clicking a grid
   $('.box').on('click', putXorO);
 
-  $('.box').on('click', checkAllMatches)
+  $('.box').on('click', displayWhosTrn);
+
+    $('.box').on('click', function() {
+      if (gameOn) {
+        checkAllMatches();
+      }
+    });
+
+
+
   // clicking issues with .one and restting click by
   // caling $('.box').on('click', putXorO); in reset cb
   // $('.box').one('click', putXorO);
