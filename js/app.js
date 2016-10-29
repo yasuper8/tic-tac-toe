@@ -11,10 +11,34 @@ $(document).ready(function() {
 
   //keep track of player
   var xTurn = true;
+  var showXTurn = "X's turn."
+  var showOTurn = "O's turn."
 
-  function isRowMatch(){
+  function isRowMatch() {
 
   }
+
+  function displayWhosTrn() {
+    if (xTurn) {
+      $('#whosTrn').empty();
+      $('#whosTrn').text(showXTurn);
+      $('#whosTrn').css( 'font-size', '2em' );
+      $('#whosTrn').css( "font-family", "\'Space Mono\'");
+    } else {
+      $('#whosTrn').empty();
+      $('#whosTrn').text(showOTurn);
+      $('#whosTrn').css( 'font-size', '2em' );
+      $('#whosTrn').css( "font-family", "\'Space Mono\'");
+    }
+  }
+
+  displayWhosTrn();
+  // This does not work.
+  // function styleXandO() {
+  //   $(this).css( 'font-size', '8em' );
+  //   $(this).css( "font-family", "\'Lora\'");
+  // }
+
 
   //chaecks whos turn and place X or O
   function putXorO(whosTurn) {
@@ -23,10 +47,17 @@ $(document).ready(function() {
       xTurn = false;
       $(this).text("X");
       $(this).css( 'pointer-events', 'none' );
+      $(this).css( 'font-size', '7em' );
+      $(this).css( "font-family", "\'Space Mono\'");
+      displayWhosTrn();
+
     } else if ($(this).text("")){
       xTurn = true;
       $(this).text("O");
       $(this).css( 'pointer-events', 'none' );
+      $(this).css( 'font-size', '7em' );
+      $(this).css( "font-family", "\'Space Mono\'");
+      displayWhosTrn();
     }
   }
 

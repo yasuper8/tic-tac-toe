@@ -21,6 +21,9 @@
     <script type="text/javascript" src="js/app.js">
 
     </script>
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
     <title>Tic Tac Toe</title>
   </head>
   <body>
@@ -28,9 +31,15 @@
       <div class="row text-center">
         <div class="col-md-12">
           <h1>Tic Tac Toe</h1>
+          <div class="row">
+            <div id="playerX" class="col-xs-4"></div>
+            <div id="whosTrn" class="col-xs-4"></div>
+            <div id="playerO" class="col-xs-4"></div>
+          </div>
           <hr>
         </div>
       </div>
+
       <div class="row">
 
         <!-- a column represents our game board -->
@@ -40,21 +49,21 @@
           <!-- you can put rows inside of columns! -->
           <!-- Bootstrap subdivides these 'nested' rows into 12 columns, too! -->
           <div class="row">
-            <div id="a1" class="col-xs-4 box">a1</div>
-            <div id="a2" class="col-xs-4 box">a2</div>
-            <div id="a3" class="col-xs-4 box">a3</div>
+            <div id="a1" class="col-xs-4 box text-center">a1</div>
+            <div id="a2" class="col-xs-4 box text-center">a2</div>
+            <div id="a3" class="col-xs-4 box text-center">a3</div>
           </div>
           <div class="row">
-            <div id="b1" class="col-xs-4 box">b1</div>
-            <div id="b2" class="col-xs-4 box">b2</div>
-            <div id="b3" class="col-xs-4 box">b3</div>
+            <div id="b1" class="col-xs-4 box text-center">b1</div>
+            <div id="b2" class="col-xs-4 box text-center">b2</div>
+            <div id="b3" class="col-xs-4 box text-center">b3</div>
           </div>
           <div class="row">
-            <div id="c1" class="col-xs-4 box">c1</div>
-            <div id="c2" class="col-xs-4 box">c2</div>
-            <div id="c3"class="col-xs-4 box">c3</div>
+            <div id="c1" class="col-xs-4 box text-center">c1</div>
+            <div id="c2" class="col-xs-4 box text-center">c2</div>
+            <div id="c3"class="col-xs-4 box text-center">c3</div>
           </div>
-          <button id="btn" type="button" name="button">Reset</button>
+          <button id="btn" class="btn-primary btn-lg" type="button" name="button">Reset</button>
 
 
 
