@@ -9,14 +9,75 @@ $(document).ready(function() {
 
 
 
+  var middleRow = ["b1", "b2", "b3"];
+  var bottomRow = ["c1", "c2", "c3"];
+
+
+
   //keep track of player
   var xTurn = true;
-  var showXTurn = "X's turn."
-  var showOTurn = "O's turn."
+  var showXTurn = "X's turn!"
+  var showOTurn = "O's turn!"
 
-  function isRowMatch() {
+var gameBoard = {
+  topRow: ["#a1", "#a2", "#a3"],
+  middleRow: ["#b1", "#b2", "#b3"],
+  bottomRow: ["#c1", "#c2", "#c3"],
+  colLeft:["#a1", "#b1", "#c1"],
+  colMiddle: ["#a2", "#b2", "#c2"],
+  colRight: ["#c1", "#c2", "#c3"],
+  diagoRight: ["#a3", "#b2", "#c1"],
+  diagoLeft: ["#a1", "#b2", "#c3"]
+}
 
+
+function checkAllMatches() {
+  $.each(gameBoard, function(gridLine, value) {
+    console.log(value)
+    isRowMatch(value);
+  });
+}
+
+// function isDrow() {
+//   if()
+// }
+
+
+
+
+
+  function isRowMatch(arr) {
+    var matchCounterX = 0;
+    var matchCounterO = 0;
+    arr.forEach(function(box) {
+      console.log($(box).text());
+
+      if ($(box).text() === "") {
+        return;
+      } else if ($(box).text() === "X") {
+        matchCounterX++;
+      } else if ($(box).text() === "O") {
+        matchCounterO++;
+      }
+      if (matchCounterO === 3) {
+        setTimeout(function() {
+          alert("O win!");
+        }, 150);
+      }
+      if (matchCounterX === 3) {
+        setTimeout(function() {
+          alert("X win!");
+        }, 150);
+      }
+    });
   }
+
+
+
+
+
+
+
 
   function displayWhosTrn() {
     if (xTurn) {
@@ -64,7 +125,7 @@ $(document).ready(function() {
   // Calling putXorO by clicking a grid
   $('.box').on('click', putXorO);
 
-
+  $('.box').on('click', checkAllMatches)
   // clicking issues with .one and restting click by
   // caling $('.box').on('click', putXorO); in reset cb
   // $('.box').one('click', putXorO);
@@ -76,6 +137,7 @@ $(document).ready(function() {
     $('.box').text("");
     $(".box").css( 'pointer-events', 'auto' ); // Making a block clickable again
     xTurn = true;
+    $('#whosTrn').text(showXTurn); // Resets the display of whos turn
   })
 
 
